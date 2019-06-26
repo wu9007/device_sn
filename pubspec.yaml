@@ -1,0 +1,21 @@
+name: device_sn
+description: A Flutter plugin 🛠 to get device SN. Ready for Android 🚀.
+version: 0.1.0
+author: Shusheng <leyansorosame@gmail.com>
+homepage: https://github.com/leyan95/qrcode_scanner
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: com.shinow.device_sn
+    pluginClass: DeviceSnPlugin
