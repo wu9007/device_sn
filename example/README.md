@@ -1,16 +1,54 @@
 # device_sn_example
+```dart
+import 'package:flutter/material.dart';
+import 'dart:async';
 
-Demonstrates how to use the device_sn plugin.
+import 'package:device_sn/device_sn.dart';
 
-## Getting Started
+void main() => runApp(MyApp());
 
-This project is a starting point for a Flutter application.
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-A few resources to get you started if this is your first Flutter project:
+class _MyAppState extends State<MyApp> {
+  String _sn = 'Unknown';
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  @override
+  void initState() {
+    super.initState();
+    initSnState();
+  }
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  Future<void> initSnState() async {
+    String sn;
+    try {
+      sn = await DeviceSn.pdaSn;
+    } on Exception {
+      sn = await DeviceSn.commonSn;
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _sn = sn;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Plugin example app'),
+        ),
+        body: Center(
+          child: Text('_commonSn: $_sn\n'),
+        ),
+      ),
+    );
+  }
+}
+
+```

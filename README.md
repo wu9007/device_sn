@@ -14,19 +14,15 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
- device_sn: ^0.1.0
+ device_sn: ^0.1.1
 ```
 
 ## Usage example
 ```dart
 import 'package:device_sn/device_sn.dart';
 
-String sn;
-try {
-  sn = await DeviceSn.pdaSn;
-} on Exception {
-  sn = await DeviceSn.commonSn;
-}
+String commonSn = await DeviceSn.commonSn;
+String pdaSn = await DeviceSn.pdaSn;
 ```
 
 ## Contribute
