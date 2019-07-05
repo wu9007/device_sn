@@ -14,7 +14,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
- device_sn: ^0.1.1
+ device_sn: ^0.1.2
 ```
 
 ## Usage example
